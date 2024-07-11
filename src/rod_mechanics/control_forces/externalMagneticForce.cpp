@@ -25,31 +25,6 @@ externalMagneticForce::~externalMagneticForce()
 
 void externalMagneticForce::computeFm(double m_currentTime)
 {
-	// Compute minimal distance as output 
-	Vector3d xCurrent = rod->getVertex(rod->nv-1);
-
-	double minDistance = 100000.00;
-	int contactIndex = 0;
-
-	for (int kk = 0; kk < rod->tubeNv - 1; kk++)
-	{
-		Vector3d tubeNode1 = rod->tubeNode.row(kk);
-		Vector3d tubeNode2 = rod->tubeNode.row(kk+1);
-
-		double d1 = (xCurrent - tubeNode1).norm();
-		double d2 = (xCurrent - tubeNode2).norm();
-
-		double xCurrentDis = (d2 + d1) / 2;
-
-		if (xCurrentDis < minDistance)
-		{
-			minDistance = xCurrentDis;
-			contactIndex = kk;
-		}
-	}
-
-	cout << "m_dist: " << minDistance << endl;
-
 	for (int i = 0; i < rod->ne; i++)
 	{
 		m1_current = rod->m1_old.row(i);
@@ -65,57 +40,43 @@ void externalMagneticForce::computeFm(double m_currentTime)
 
 		edge = (x2 - x1).norm();
 
-		
-
-		double output = minDistance ; // use the minimal distance
-		double error = minDistance - 0;
-
-		double kp = 10;
-		double ki = 0.1;
-		double kd = 0.5;
-
-		baVector_ref(0) = kp * error;
-		baVector_ref(1) = kp * error;
-		baVector_ref(2) = kp * error;
-
-
 		// numerical test
-		
-		// m1_start(0) = 0.8682;
-		// m1_start(1) = 0.0;
-		// m1_start(2) = 0.4961;
+		/*
+		m1_start(0) = 0.8682;
+		m1_start(1) = 0.0;
+		m1_start(2) = 0.4961;
 
-		// m2_start(0) = 0.1195;
-		// m2_start(1) = 0.9706;
-		// m2_start(2) = -0.2090;
+		m2_start(0) = 0.1195;
+		m2_start(1) = 0.9706;
+		m2_start(2) = -0.2090;
 
-		// m3_start(0) = -0.4815;
-		// m3_start(1) = 0.2408;
-		// m3_start(2) = 0.8427;
+		m3_start(0) = -0.4815;
+		m3_start(1) = 0.2408;
+		m3_start(2) = 0.8427;
 
-		// m1_current(0) = 0.9355;
-		// m1_current(1) = 0.1275;
-		// m1_current(2) = 0.3295;
+		m1_current(0) = 0.9355;
+		m1_current(1) = 0.1275;
+		m1_current(2) = 0.3295;
 
-		// m2_current(0) = -0.2939;
-		// m2_current(1) = 0.7985;
-		// m2_current(2) = 0.5254;
+		m2_current(0) = -0.2939;
+		m2_current(1) = 0.7985;
+		m2_current(2) = 0.5254;
 
-		// m3_current(0) = -0.1961;
-		// m3_current(1) = -0.5883;
-		// m3_current(2) = 0.7845;
+		m3_current(0) = -0.1961;
+		m3_current(1) = -0.5883;
+		m3_current(2) = 0.7845;
 
-		// edge = 0.5099;
+		edge = 0.5099;
 
-		// brVector(0) =  0.3;
-		// brVector(1) =  0.9;
-		// brVector(2) = -0.1;
+		brVector(0) =  0.3;
+		brVector(1) =  0.9;
+		brVector(2) = -0.1;
 
-		// baVector(0) = -0.1;
-		// baVector(1) =  0.2;
-		// baVector(2) =  0.4;
+		baVector(0) = -0.1;
+		baVector(1) =  0.2;
+		baVector(2) =  0.4;
 
-		
+		*/
 
 		gradientBa.setZero(3, 3);
 

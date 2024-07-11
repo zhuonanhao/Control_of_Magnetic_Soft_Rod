@@ -2,8 +2,8 @@
 #define ELASTICBENDINGFORCE_H
 
 #include "eigenIncludes.h"
-#include "elasticRod.h"
-#include "timeStepper.h"
+#include "rod_mechanics/elasticRod.h"
+#include "time_steppers/timeStepper.h"
 
 class elasticBendingForce
 {

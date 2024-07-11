@@ -6,25 +6,26 @@
 #include <time.h>
 
 // include elastic rod class
-#include "elasticRod.h"
+#include "rod_mechanics/elasticRod.h"
 
 // include force classes
-#include "elasticStretchingForce.h"
-#include "elasticBendingForce.h"
-#include "elasticTwistingForce.h"
-#include "externalGravityForce.h"
-#include "externalMagneticForce.h"
-#include "inertialForce.h"
-#include "externalContactForce.h"
+#include "rod_mechanics/inner_forces/elasticStretchingForce.h"
+#include "rod_mechanics/inner_forces/elasticBendingForce.h"
+#include "rod_mechanics/inner_forces/elasticTwistingForce.h"
+#include "rod_mechanics/external_forces/externalGravityForce.h"
+#include "rod_mechanics/control_forces/externalMagneticForce.h" 
+#include "rod_mechanics/inner_forces/inertialForce.h"
+#include "rod_mechanics/external_forces/externalContactForce.h"
 
 // include external force
-#include "dampingForce.h"
+#include "rod_mechanics/external_forces/dampingForce.h"
+// #include "dampingForce.cpp"
 
 // include time stepper
-#include "timeStepper.h"
+#include "time_steppers/timeStepper.h"
 
 // include input file and option
-#include "setInput.h"
+#include "initialization/setInput.h"
 
 class world
 {

@@ -1,5 +1,5 @@
 #include "dampingForce.h"
-#include <iostream>
+
 
 dampingForce::dampingForce(elasticRod &m_rod, timeStepper &m_stepper, 
 	double m_viscosity, double m_eta_per, double m_eta_par)
